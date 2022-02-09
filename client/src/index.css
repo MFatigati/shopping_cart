@@ -75,9 +75,14 @@ h3 {
 
 .product .edit-form,
 .add-form {
+  display: block;
   margin-top: 20px;
   border-top: 1px solid #ccc;
   padding-top: 10px;
+}
+
+.edit-form.invisible {
+  display: none
 }
 
 .input-group {
