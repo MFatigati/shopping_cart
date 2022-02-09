@@ -1,7 +1,7 @@
 import React from "react"
 import { useState } from "react";
 
-const AddProductForm = ({onAddProduct}) => {
+const AddProductForm = ({onAddProduct, products, setProducts}) => {
   const [isVisible, setVisibility] = useState(false)
   const [productName, setProductName] = useState("")
   const [price, setPrice] = useState(0)
@@ -13,7 +13,7 @@ const AddProductForm = ({onAddProduct}) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    onAddProduct({
+    onAddProduct(setProducts, products, {
       title: productName,
       price,
       quantity
@@ -21,6 +21,7 @@ const AddProductForm = ({onAddProduct}) => {
     setProductName("");
     setPrice(0);
     setQuantity(0);
+    toggleForm();
   }
 
   return (

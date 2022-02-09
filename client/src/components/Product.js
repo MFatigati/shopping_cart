@@ -26,10 +26,10 @@ const Product = (props) => {
           <p class="price">{props.price}</p>
           <p class="quantity">{props.quantity} left in stock</p>
           <div class="actions product-actions">
-            <a href="/#" class="button add-to-cart" onClick={() => props.handleAddToCart(props.id)}>Add to Cart</a>
+            <a href="/#" className={quantity > 0 ? "button add-to-cart" : "button add-to-cart disabled"} onClick={() => props.handleAddToCart(props.id, props.setProducts, props.products, props.setCartItems, props.cartItems)}>Add to Cart</a>
             <a href="/#" class="button edit" onClick={toggleEdit}>Edit</a>
           </div>
-          <a href="/#" class="delete-button" onClick={() => props.onDelete(props.id)}><span>X</span></a>
+          <a href="/#" class="delete-button" onClick={() => props.onDelete(props.id, props.setProducts, props.products)}><span>X</span></a>
         </div>
       </div>
       <div className={isVisible ? "edit-form" : "edit-form invisible"}>
@@ -51,8 +51,8 @@ const Product = (props) => {
               </div>
 
               <div class="actions form-actions">
-                <a class="button" onClick={() => props.onEdit(updatedProduct)}>Update</a>
-                <a class="button" onClick={toggleEdit}>Cancel</a>
+                <a href="/#" class="button" onClick={() => {props.onEdit(updatedProduct, props.setProducts, props.products); toggleEdit()}}>Update</a>
+                <a href="/#" class="button" onClick={toggleEdit}>Cancel</a>
               </div>
             </form>
           </div>

@@ -1,10 +1,7 @@
 import React from "react";
 import Product from "./Product"
-//import data from "../../src/lib/data"
-import { useEffect, useState } from "react";
-import axios from 'axios'
 
-const Inventory = ({products, onDelete, onEdit, onAddToCart}) => {
+const Inventory = ({products, onDelete, onEdit, onAddToCart, setProducts, cartItems, setCartItems}) => {
 
   return (
     <div class="product-listing">
@@ -12,7 +9,7 @@ const Inventory = ({products, onDelete, onEdit, onAddToCart}) => {
     <ul>
       {products.map(product => {
         return (
-          <Product key={product._id} id={product._id} title={product.title} price={product.price} quantity={product.quantity} onDelete={onDelete} onEdit={onEdit} handleAddToCart={onAddToCart}/>
+          <Product key={product._id} products={products} id={product._id} title={product.title} price={product.price} quantity={product.quantity} setProducts={setProducts} cartItems={cartItems} setCartItems={setCartItems} onDelete={onDelete} onEdit={onEdit} handleAddToCart={onAddToCart}/>
         )
       })}
     </ul>
